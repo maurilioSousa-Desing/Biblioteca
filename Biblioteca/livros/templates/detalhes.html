@@ -1,0 +1,29 @@
+{% extends 'site/base.html' %}
+{% load staticfiles %}
+{% block content %}
+  <main class="container">
+  	<h3 class="title"> Detalhes do livros</h3>
+    	<section id="details">
+
+
+			<label>Nome: </label>{{post.nome}}<br/>
+            <label>Categoria:</label>{{post.categoria}}<br/>
+            <label>Capa:</label>{{post.capa}}<br/>
+			<label>Autor: </label>{{post.autor}}<br/>
+			<label>Data Publicaçao: </label>{{post.data_publicacao}}<br/>
+			<label>Paginas: </label>{{post.numero_paginas}}</p><br/>
+
+			<a href="{% url 'livros.views.atualiza' pk=post.pk %}">
+				<img src="{% static 'img/update.png' %}" /> Alterar
+			</a>
+			<button class="button-back"  onclick="new MyQuestion('Deseja realmente excluir o livro {{ post.nome }}',
+    '{% url 'livros.views.exclui' pk=post.pk %}').question()">
+				<img src="{% static 'img/delete.png' %}" /> Excluir
+			</button>
+			<a href="{% url 'livros.views.lista' %}">
+				<img src="{% static 'img/back.png' %}"> Voltar
+			</a>
+		</section>
+
+    </main>
+{% endblock %}
